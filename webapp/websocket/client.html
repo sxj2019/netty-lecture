@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket的客户端</title>
+</head>
+
+<body>
+<script type="application/javascript">
+    var socket;
+    if(window.WebSocket){
+        socket = new WebSocket("ws://localhost:8899/ws");
+        //获取服务器的数据
+        socket.onmessage = function(event){
+            var ta = document.getElementById("getMsg");
+            ta.value = ta.value + "\n" +event.data;
+        }
+        //
+        socket.onopen = function (ev) {
+            var ta = document.getElementById("getMsg");
+            ta.value = ta.value + "\n" +"连接建立了。。。";
+        }
+        //
+        socket.onclose = function (ev) {
+            var ta = document.getElementById("getMsg");
+            ta.value = ta.value + "\n"+"连接关闭了。。。";
+        }
+    }else {
+        alert("当前浏览器不支持WebSocket");
+    }
+
+    function send(message) {
+        // alert("准备发送的数据："+message);
+        if(!window.WebSocket){
+            return;
+        }
+        if (socket.readyState == WebSocket.OPEN){
+            socket.send(message);
+        } else {
+            alert("WebSocket 尚未开启！");
+        }
+    }
+</script>
+
+<form onsubmit="return false;">
+    <textarea id="sendMsg" style="width: 400px;height:200px "></textarea>
+    <input type="button" value="发送数据"  onclick="send(this.form.sendMsg.value)"/>
+    <h3>客户端输出</h3>
+    <textarea id="getMsg" style="width: 400px;height: 200px"></textarea>
+    <input type="button" value="清除" onclick="javascript: document.getElementById('getMsg').value=''">
+</form>
+
+</body>
+
+</html>
