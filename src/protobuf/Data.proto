@@ -1,0 +1,43 @@
+syntax = "proto2";
+package com.imooc.sevenlesson;
+
+option java_package = "com.imooc.sevenlesson";
+option java_outer_classname = "DataInfo";
+
+message Message{
+    enum DataType{
+        CatType = 1;
+        DogType = 2;
+        BirdType = 3;
+    }
+
+    required DataType date_type = 1;
+
+    oneof dataBody{
+        Cat cat = 2;
+        Dog dog = 3;
+        Bird bird = 4;
+    }
+
+}
+
+message Cat{
+    optional int32 id = 1;
+    optional string name = 2;
+    optional int32 age = 3;
+}
+
+message Dog{
+    optional int32 id = 1;
+    optional string name = 2;
+    optional int32 age = 3;
+}
+
+message Bird{
+    optional int32 id = 1;
+    optional string name = 2;
+    optional int32 age = 3;
+}
+
+
+
