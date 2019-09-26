@@ -1,7 +1,7 @@
 package com.imooc.sevenlesson.client;
 
 import com.imooc.sevenlesson.DataInfo;
-import com.imooc.sevenlesson.Student;
+//import com.imooc.sevenlesson.Student;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 

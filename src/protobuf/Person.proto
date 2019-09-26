@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package="com.imooc.ninelesson";
+option java_outer_classname = "GrpcData";
+
+package ninelesson;
+
+service NameService{
+    rpc getFullName(MyRequest) returns(MyResponse){};
+}
+
+message MyRequest{
+    string name = 1;
+}
+
+message MyResponse{
+    string fullName = 2;
+}
+
+
+
