@@ -1,0 +1,18 @@
+syntax = "proto3";
+package com.imooc.ninelesson;
+
+option java_package = "com.imooc.ninelesson";
+option java_outer_classname = "MyData";
+option java_multiple_files = true;
+
+service UserService{
+    rpc getUserName(MyRequest) returns(MyResponse){};
+}
+
+message MyRequest{
+     string username = 1;
+}
+
+message MyResponse{
+    string result = 2;
+}
