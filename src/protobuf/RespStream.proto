@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.imooc.tenlesson";
+option java_outer_classname = "RespStream";
+
+package tenlesson;
+
+service PersonService{
+    rpc getPersonByAge(MyRequest) returns (stream MyResponseStream){}
+
+    rpc getPersonByAges(stream MyRequest) returns(MyResponseList){}
+}
+
+message MyRequest{
+    int32 age = 1;
+}
+
+message MyResponseStream{
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+message MyResponseList{
+    repeated  MyResponseStream  respStream= 1;
+}
